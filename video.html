@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+       .wapr{
+           width: 300px;
+           position: relative;
+       }
+        
+       .alerta{
+          width: 60%;
+    		height:100px;
+    		background: red ;
+    		position: absolute;
+    		z-index: 2;
+    		top: 100px;
+    		left: 150px;
+    		display: none;
+       }
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="wapr">
+
+   <video width="500px" height="300px" controls>
+
+    <source src="./asst/002.mp4" type="video/mp4">
+    <source src="./asst/002.ogg" type="video/ogg">
+        您的浏览器不支持 HTML5 video 标签。
+   </video>
+  <div class="alerta">
+      <button class='alertme'>点击</button>
+  </div>
+    </div>
+   
+
+     <script>
+        var video = document.getElementsByTagName("video")[0];
+        var alertme=document.getElementsByClassName('alertme')[0]
+        var myAlter = document.getElementsByClassName("alerta")[0]
+            function vid(){
+             var timer = setInterval(function(){
+                 console.log(video.currentTime)
+                 if(parseInt(video.currentTime)==2){
+                     myAlter.style.display = 'block'
+                     video.pause();
+                    //  alert("myAlter")
+                     clearInterval(timer)
+                 }
+         },1000);
+     }
+     vid()
+     alertme.onclick=function(){
+         myAlter.style.display='none'
+         video.play()
+         
+     }
+     
+     </script>
+
+
+</body>
+
+</html>
